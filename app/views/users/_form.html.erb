@@ -1,0 +1,11 @@
+<% action = @user.persisted? ? user_url(@user) : users_url %>
+<% button_text = @user.persisted? ? "Update" : "Create" %>
+
+
+<form action="<%= action %>" method="POST">
+    <% if @user.persisted? %>
+        <input type="hidden" name="_method" value="PATCH">
+    <% end %>
+
+    
+</form>

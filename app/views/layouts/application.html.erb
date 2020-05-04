@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+   
+    <% if logged_in? %>
+      <ul>
+        <li> <%= current_user.username %> </li>
+        <li> <a href = "<%= new_sub_url %>">Create a Sub!</a> </li>
+        <li> <a href = "<%= subs_url %>">All Subs</a> </li>
+        <li>
+          <form action="<%= new_session_url %>" method="POST">
+            <%= auth %>
+            <input type="hidden" name="_method" value="delete" >
+            <button>Logout</button>
+          </form>
+        </li>
+      </ul>
+      
+    <% end %>
+
+
+
+    
+    
+
+    <% if flash[:errors] %>
+      <%= flash[:errors].join(", ") %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
